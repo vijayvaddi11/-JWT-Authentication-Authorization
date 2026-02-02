@@ -90,7 +90,15 @@ app.post('/login', async(req, res)=>{
           return res.status(400).json({message:"Email or Password is worng"})
      }
 
-     
+     const token = jwt.sign(
+          {userId:existingUSer._id,
+          email:existingUSer.email
+          },
+          process.env.JWT_SECRET,
+          {expiresIn:'1h'}
+               );
+
+     console.log(token)
      
      return res.status(200).json(
           {message:'User Login Successfull',
