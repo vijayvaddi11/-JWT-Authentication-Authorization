@@ -74,6 +74,36 @@ app.post('/register', async(req, res) => {
 
 });
 
+app.post('/login', async(req, res)=>{
+     try{
+     const {email,password} = req.body
+
+     const existingUSer = await User.findOne({email})
+
+     if (!existingUSer){
+          return res.status(400).json({message:"Email or Password is worng"})
+     }
+
+     const match = await bcrypt.compare(password, existingUSer.password);
+
+     if (!match){
+          return res.status(400).json({message:"Email or Password is worng"})
+     }
+
+     
+     
+     return res.status(200).json(
+          {message:'User Login Successfull',
+          token:token  
+          });
+
+     }catch(err){
+          res.status(500).json({
+               message:"Server Error",
+               error:err.message
+          })
+     }
+});
 
 app.listen(3000,()=>{
      console.log('port running on 3000')
