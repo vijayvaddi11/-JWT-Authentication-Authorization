@@ -16,6 +16,31 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 
+const verifyToken =(req,res,next)=>{
+     const authHeader = req.headers.authorization;
+
+     if(!authHeader){
+          return res.status(401).json({message:'Token missing'})
+     }
+
+     const token = authHeader.split(" ")[1];
+
+     try{
+          const decoded = jwt.verify(token,process.env.JWT_SECRET)
+          console.log(decoded)
+          req.userId = decoded.userId;
+          req.username = decoded.username;
+          next();
+
+     }catch(err){
+          return res.status(401).json({ message: "Invalid token" });
+     }
+
+     
+
+}
+
+
 app.get('/',(req,res)=>{
      res.send('Home Page')
 });
@@ -92,6 +117,7 @@ app.post('/login', async(req, res)=>{
 
      const token = jwt.sign(
           {userId:existingUSer._id,
+          username:existingUSer.username,
           email:existingUSer.email
           },
           process.env.JWT_SECRET,
@@ -112,6 +138,10 @@ app.post('/login', async(req, res)=>{
           })
      }
 });
+
+
+
+
 
 app.listen(3000,()=>{
      console.log('port running on 3000')
