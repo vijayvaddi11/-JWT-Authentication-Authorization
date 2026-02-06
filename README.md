@@ -49,7 +49,7 @@ cd -JWT-Authentication-Authorization
 npm install
 ```
 
-###3️⃣ Create .env file
+### 3️⃣ Create .env file
 Create a .env file in the root folder:
 ```bash
 PORT=5000
@@ -57,7 +57,7 @@ MONGODB_URI=<your_mongodb_connection_string>
 JWT_SECRET=<your_jwt_secret>
 ```
 
-###4️⃣ Run the server
+### 4️⃣ Run the server
 ```bash
 npm start
 ```
