@@ -1,6 +1,6 @@
 # JWT Authentication & Authorization (Node.js)
 
-🔐 A demo backend project for **JWT based Authentication & Authorization** using **Node.js**, **Express**, and **MongoDB** — built as a practice and reference REST API.
+A demo backend project for **JWT based Authentication & Authorization** using **Node.js**, **Express**, and **MongoDB** — built as a practice and reference REST API.
 
 This project includes:
 - Secure user registration & login
@@ -11,7 +11,7 @@ This project includes:
 
 ---
 
-## 🚀 Features
+##  Features
 
 ✔ User Signup (register)  
 ✔ User Login (generate JWT)  
@@ -22,7 +22,7 @@ This project includes:
 
 ---
 
-## 🧠 Tech Stack
+##  Tech Stack
 
 | Component | Technology |
 |-----------|------------|
@@ -35,19 +35,6 @@ This project includes:
 
 ---
 
-## 📁 Project Structure
-
-config/
-middleware/
-models/
-index.js
-.gitignore
-package.json
-README.md
-
-
----
-
 ## 🛠 Setup Instructions
 
 ### 1️⃣ Clone the repository
@@ -55,16 +42,22 @@ README.md
 ```bash
 git clone https://github.com/vijayvaddi11/-JWT-Authentication-Authorization.git
 cd -JWT-Authentication-Authorization
+```
 
 ### 2️⃣ Install dependencies
+```bash
 npm install
+```
 
 ###3️⃣ Create .env file
-
 Create a .env file in the root folder:
+```bash
 PORT=5000
 MONGODB_URI=<your_mongodb_connection_string>
 JWT_SECRET=<your_jwt_secret>
+```
 
 ###4️⃣ Run the server
+```bash
 npm start
+```
